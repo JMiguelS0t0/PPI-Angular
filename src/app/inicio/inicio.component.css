@@ -16,15 +16,9 @@
   font-size: 20px;
 }
 
-.img-logo {
-  width: 100%;
-  height: 7rem;
-  margin: 0 0.5rem 0.5rem 0;
-}
-
 /*-------------------- SERVICIOS --------------------*/
 .img-bg {
-  background-image: url(img/fondo.jpeg);
+  background-image: url(../../assets/img/fondo.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -36,7 +30,7 @@
 
 /* ------------ BOTONES ------------*/
 .btn-bg {
-  background-image: url(img/boton.jpeg);
+  background-image: url(../../assets/img/boton.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -58,7 +52,7 @@
 /* ------------------ FORMULARIO ------------------ */
 form {
   text-align: start;
-  background-image: url(img/fondo.jpeg);
+  background-image: url(../../assets/img/fondo.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
