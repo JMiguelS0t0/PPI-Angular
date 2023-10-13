@@ -1,8 +1,4 @@
 .btn-bg {
-  background-image: url(../../assets/img/boton.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   height: 60px;
   width: 28%;
 }
@@ -10,15 +6,5 @@
 @media (max-width: 767px) {
   .btn-bg {
     width: 100%;
-  }
-}
-
-.container-btn {
-  padding-top: 195px;
-}
-
-@media (max-width: 767px) {
-  .container-btn {
-    padding: 0;
   }
 }

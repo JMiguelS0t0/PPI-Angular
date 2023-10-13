@@ -17,37 +17,11 @@
 }
 
 /*-------------------- SERVICIOS --------------------*/
-.img-bg {
-  background-image: url(../../assets/img/fondo.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
 
 .servicios-m {
   margin-bottom: 140px;
 }
 
-/* ------------ BOTONES ------------*/
-.btn-bg {
-  background-image: url(../../assets/img/boton.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.btn-grande {
-  color: black;
-  margin: 15px;
-  width: 50%;
-  height: 150px;
-}
-
-@media (max-width: 767px) {
-  .btn-grande {
-    width: 100%;
-  }
-}
 
 /* ------------------ FORMULARIO ------------------ */
 form {
@@ -72,7 +46,4 @@ form {
   margin: 15px;
 }
 
-/*----------------------- FOOTER -----------------------*/
-footer {
-  height: auto;
-}
+

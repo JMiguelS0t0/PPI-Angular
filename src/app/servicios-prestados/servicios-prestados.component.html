@@ -1,64 +1,19 @@
 <app-nav></app-nav>
-<h1 class="text-center mt-3">Servicios Prestados</h1>
+<h1 class="text-center mt-3 text-black">Servicios Prestados</h1>
 <div class="bg-white text-center pt-2 p-5 mb-2 d-flex align-items-center text-center">
     <div class="row">
-        <div class="col-12 col-md-5 mb-4">
-            <img src="../../assets/img/Decoracion.jpeg" alt="Logo" class="w-100 mt-md-2 pt-md-2">
-        </div>
-        <div class="col-12 col-md-6 mt-md-2 pt-md-2">
-            <p class="text-start "> Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-                Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-            </p>
-            <p class="text-start "> Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-                Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-            </p>
-            <div class="text-end container-btn">
-                <button class="btn mt-3 btn-bg">Leer mas</button>
+        <ng-container *ngFor="let servicios of servicios">
+            <div class="col-12 col-md-5 ">
+                <img [src]="servicios.image" alt="Logo" class="w-100 mt-md-2 pt-md-2">
             </div>
-        </div>
+            <div class="col-12 col-md-6 mt-md-2 pt-md-2 mb-3">
+                <p class="text-start "> {{servicios.descripcion}} </p>
+                <div class="text-end container-btn mt-auto">
+                    <button class="btn btn-bg">Leer mas</button>
+                </div>
+            </div>
+        </ng-container>
     </div>
 </div>
 
-<div class="bg-white text-center pt-2 p-5 mb-2 d-flex align-items-center text-center">
-    <div class="row">
-        <div class="col-12 col-md-5 mb-4">
-            <img src="../../assets/img/Decoracion.jpeg" alt="Logo" class="w-100 mt-md-2 pt-md-2">
-        </div>
-        <div class="col-12 col-md-6 mt-md-2 pt-md-2">
-            <p class="text-start "> Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-                Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-            </p>
-            <p class="text-start "> Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-                Proin tempor ipsum eu nisi condimentum lacinia. Proin id urna nisl. Vivamus
-                pulvinar mollis orci, a
-                mattis
-                lacus suscipit et. Donec nisi dui, tempor vel mauris malesuada, laoreet hendrerit urna.
-            </p>
-            <div class="text-end container-btn">
-                <button class="btn mt-3 btn-bg">Leer mas</button>
-            </div>
-        </div>
-    </div>
-</div>
 <app-footer></app-footer>

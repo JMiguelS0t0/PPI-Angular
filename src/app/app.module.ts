@@ -6,6 +6,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ServiciosPrestadosComponent } from './servicios-prestados/servicios-prestados.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+import { CatalogoComponent } from './catalogo/catalogo.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -17,6 +18,10 @@ const APP_ROUTES: Routes = [
     component: ServiciosPrestadosComponent,
   },
   {
+    path: 'catalogo',
+    component: CatalogoComponent,
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: 'inicio',
@@ -24,7 +29,12 @@ const APP_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, InicioComponent, ServiciosPrestadosComponent],
+  declarations: [
+    AppComponent,
+    InicioComponent,
+    ServiciosPrestadosComponent,
+    CatalogoComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
