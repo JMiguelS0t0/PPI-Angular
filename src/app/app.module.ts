@@ -16,16 +16,16 @@ const APP_ROUTES: Routes = [
     component: InicioComponent,
   },
   {
-    path: 'serviciosprestados',
+    path: 'servicioprestado',
     component: ServiciosPrestadosComponent,
-  },
-  {
-    path: 'catalogo',
-    component: CatalogoComponent,
   },
   {
     path: 'servicio',
     component: EntServiciosComponent,
+  },
+  {
+    path: 'catalogo',
+    component: CatalogoComponent,
   },
   {
     path: 'entcatalogo',
