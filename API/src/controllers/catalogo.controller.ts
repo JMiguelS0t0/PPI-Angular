@@ -1,10 +1,19 @@
-import { catalogo } from "../model/catalogo";
-import * as DaoCatalogo from "../dao/catalogo.dao";
+import { catalogo } from '../model/catalogo';
+import * as DaoCatalogo from '../dao/catalogo.dao';
 
 export const getCatalogo = async (): Promise<catalogo[]> => {
   try {
     let c: catalogo[] = await DaoCatalogo.listarCatalogo();
     return c;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getCatalogoById = async (id: number): Promise<catalogo> => {
+  try {
+    const catalogo = await DaoCatalogo.obtenerCatalogoPorId(id);
+    return catalogo;
   } catch (error) {
     throw error;
   }

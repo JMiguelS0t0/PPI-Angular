@@ -1,15 +1,45 @@
-import GetConnection from "../conexion/connection";
-import { servicios } from "../model/servicios";
+import { IResult } from 'mssql';
+import GetConnection from '../conexion/connection';
+import { servicios } from '../model/servicios';
 
 export const listarServicio = async (): Promise<servicios[]> => {
   try {
-    let sql = "SELECT * FROM servicios";
+    let sql = 'SELECT * FROM servicios';
     const pool = await GetConnection();
     let rs = await pool.query<servicios>(sql);
     if (rs != undefined) {
       return rs.recordset;
     }
     return [];
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const obtenerServicioPorId = async (id: number): Promise<servicios> => {
+  try {
+    let sql = `SELECT s.*, c.nombre AS nombre_paquete
+    FROM servicios s
+    INNER JOIN catalogo c ON s.paquete = c.id
+    WHERE s.id = ${id}`;
+    const pool = await GetConnection();
+
+    return new Promise<servicios>((resolve, reject) => {
+      pool.query<servicios>(
+        sql,
+        (err?: Error, recordset?: IResult<servicios>) => {
+          if (err) {
+            reject(err);
+          } else {
+            if (recordset && recordset.recordset.length > 0) {
+              resolve(recordset.recordset[0]);
+            } else {
+              reject(new Error('Servicio no encontrado')); // Lanza un error
+            }
+          }
+        }
+      );
+    });
   } catch (error) {
     throw error;
   }

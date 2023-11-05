@@ -1,10 +1,10 @@
-import express from "express";
-import * as CatalogoController from "../controllers/catalogo.controller";
-import { catalogo } from "../model/catalogo";
+import express from 'express';
+import * as CatalogoController from '../controllers/catalogo.controller';
+import { catalogo } from '../model/catalogo';
 
 const router = express.Router();
 
-router.get("/catalogo", (_, res) => {
+router.get('/catalogo', (_, res) => {
   CatalogoController.getCatalogo()
     .then((obj) => {
       res.json(obj);
@@ -14,10 +14,25 @@ router.get("/catalogo", (_, res) => {
     });
 });
 
-router.post("/catalogo", (req: express.Request, res: express.Response) => {
+router.get('/catalogo/:id', (req: express.Request, res: express.Response) => {
+  const id = parseInt(req.params.id);
+  CatalogoController.getCatalogoById(id)
+    .then((catalogo) => {
+      if (catalogo) {
+        res.json(catalogo);
+      } else {
+        res.status(404).send('Catálogo no encontrado');
+      }
+    })
+    .catch((e) => {
+      res.status(500).json(e);
+    });
+});
+
+router.post('/catalogo', (req: express.Request, res: express.Response) => {
   CatalogoController.postCatalogo(req.body as catalogo)
     .then((f) => {
-      if (f) res.status(201).send("Inserted");
+      if (f) res.status(201).send('Inserted');
       else res.status(500).send();
     })
     .catch((e) => {
@@ -26,12 +41,12 @@ router.post("/catalogo", (req: express.Request, res: express.Response) => {
 });
 
 router.delete(
-  "/catalogo/:Id",
+  '/catalogo/:Id',
   (req: express.Request, res: express.Response) => {
     const Id = parseInt(req.params.Id);
     CatalogoController.DeleteCatalogo(Id)
       .then((f) => {
-        if (f) res.status(201).send("Deleted");
+        if (f) res.status(201).send('Deleted');
         else res.status(500).send();
       })
       .catch((e) => {
@@ -40,13 +55,13 @@ router.delete(
   }
 );
 
-router.put("/catalogo/:Id", (req: express.Request, res: express.Response) => {
+router.put('/catalogo/:Id', (req: express.Request, res: express.Response) => {
   const Id = parseInt(req.params.Id);
   const UpdateCatalogo = req.body as catalogo;
   CatalogoController.UpdateCatalogo(Id, UpdateCatalogo)
     .then((updated) => {
       if (updated) {
-        res.status(201).send("Updated");
+        res.status(201).send('Updated');
       } else {
         res.status(500).send();
       }

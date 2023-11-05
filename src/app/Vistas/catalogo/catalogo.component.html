@@ -5,11 +5,11 @@
         <ng-container *ngFor="let catalogo of listacatalogo">
             <div class="col-12 col-md-4 mb-3">
                 <div class="card card-personalizada img-bg">
-                    <img [src]="catalogo.image" class="card-img-top" alt="...">
+                    <img [src]="catalogo.img" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ catalogo.nombre }}</h5>
                         <p class="card-text text-black">{{ catalogo.descripcion }}</p>
-                        <a class="btn btn-bg" routerLink="/entcatalogo">Ver información</a>
+                        <button class="btn btn-bg" routerLink="['/entcatalogo/20']">Ver información</button>
                     </div>
                 </div>
             </div>

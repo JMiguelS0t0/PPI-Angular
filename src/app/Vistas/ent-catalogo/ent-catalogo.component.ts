@@ -1,22 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { apiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-ent-catalogo',
   templateUrl: './ent-catalogo.component.html',
   styleUrls: ['./ent-catalogo.component.css'],
 })
-export class EntCatalogoComponent {
-  paquetes = [
-    {
-      title: 'Paquete #1',
-      descripcion:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, fugit aliquid eius voluptatem explicabo soluta rerum debitis, reprehenderit a, obcaecati cumque culpa officia. Placeat, delectus natus. Voluptate mollitia ipsa illo.',
-      items: [
-        'Decoración de Mesas al Gusto: Personalizamos las mesas de acuerdo con tu visión y preferencias, asegurándonos de que cada detalle refleje la elegancia que deseas.',
-        'Fotografía y Videografía Profesional: Un equipo de expertos capturará cada momento especial de tu evento, garantizando recuerdos duraderos.',
-        'Coordinación de Eventos: Nuestro experimentado equipo de planificación se encargará de la logística y la coordinación para que puedas relajarte y disfrutar del día',
-      ],
-      image: '../../assets/img/Decoracion.jpeg',
-    },
-  ];
+export class EntCatalogoComponent implements OnInit {
+  public catalogo: any;
+
+  constructor(private route: ActivatedRoute, private apiService: apiService) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      if (params) {
+        const idParam = params.get('id');
+        if (idParam) {
+          const catalogoId = +idParam;
+          if (!isNaN(catalogoId)) {
+            this.getCatalogo(catalogoId);
+          }
+        }
+      }
+    });
+
+    console.log(this.catalogo);
+  }
+
+  getCatalogo(id: number) {
+    this.apiService.getCatalogoById(id).subscribe((catalogo) => {
+      this.catalogo = catalogo;
+    });
+  }
 }

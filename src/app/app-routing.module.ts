@@ -18,7 +18,7 @@ const routes: Routes = [
     component: ServiciosPrestadosComponent,
   },
   {
-    path: 'servicio',
+    path: 'servicio/:id',
     component: EntServiciosComponent,
   },
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
     component: CatalogoComponent,
   },
   {
-    path: 'entcatalogo',
+    path: 'entcatalogo/:id',
     component: EntCatalogoComponent,
   },
   {

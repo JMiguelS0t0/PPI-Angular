@@ -27,6 +27,11 @@ export class apiService {
       .pipe(catchError(this.handleError));
   }
 
+  public getCatalogoById(id: number): Observable<CatalogoModel> {
+    const url = `${this.catalogoUrl}/${id}`;
+    return this.http.get<CatalogoModel>(url).pipe(catchError(this.handleError));
+  }
+
   public createCatalogo(C: CatalogoModel): Observable<boolean> {
     return this.http
       .post<boolean>(`${this.catalogoUrl}`, C)
@@ -44,6 +49,13 @@ export class apiService {
   public getServicios(): Observable<ServiciosModel> {
     return this.http
       .get<ServiciosModel>(this.serviciosUrl)
+      .pipe(catchError(this.handleError));
+  }
+
+  public getServicioById(id: number): Observable<ServiciosModel> {
+    const url = `${this.serviciosUrl}/${id}`;
+    return this.http
+      .get<ServiciosModel>(url)
       .pipe(catchError(this.handleError));
   }
 
