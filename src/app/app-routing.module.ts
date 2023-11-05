@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { authGuard } from './guards/auth.guards';
+
 import { homeComponent } from './home/home.component';
 import { LoginComponent } from './admin/login/login.component';
 import { CrudComponent } from './admin/crud/crud.component';
@@ -36,6 +39,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: CrudComponent,
+    canActivate: [authGuard],
   },
   {
     path: '**',

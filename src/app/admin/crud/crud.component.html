@@ -5,13 +5,13 @@
                 <h2>Catalogo</h2>
             </div>
             <div class="col-sm-6 text-end">
-                <a href="" class="btn btn-success">
+                <button class="btn btn-success" (click)="MostrarFormulario()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                         <path
                             d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                     </svg> <span class="ms-3">Agregar</span>
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -54,7 +54,40 @@
 </div>
 
 
+<!-- Agregar PRODUCTO -->
+<div class="overlay" *ngIf="formVisible">
+    <form class="container formularios">
+        <div class="">
+            <h4 class="">Agregar producto</h4>
+        </div>
+        <div class="">
+            <div class=" form-group">
+                <label>Titulo</label>
+                <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Descripcion</label>
+                <textarea class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Imagen</label>
+                <input type="file" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Items</label>
+                <input type="text" class="form-control" required>
+            </div>
+        </div>
+        <div class="modal-footer m-2">
+            <button class="btn btn-danger m-2" (click)="OcultarFormulario()">Cerrar</button>
+            <button class="btn btn-success m-2">Agregar</button>
+        </div>
+    </form>
+</div>
+
+
 <hr>
+
 <!-- SERVICIOS PRESTADOS -->
 <div class="table-responsive-xl m-md-5">
     <div class="titulo-tabla p-3 justify-content-between">
@@ -63,13 +96,13 @@
                 <h2>Servicios Prestados</h2>
             </div>
             <div class="col-sm-6 text-end">
-                <a href="" class="btn btn-success">
+                <button class="btn btn-success" (click)="MostrarFormularioS()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                         <path
                             d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                     </svg> <span class="ms-3">Agregar</span>
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -111,59 +144,31 @@
     </table>
 </div>
 
-<!-- Agregar PRODUCTO -->
-<form class="container" hidden>
-    <div class="">
-        <h4 class="">Agregar producto</h4>
-    </div>
-    <div class="">
-        <div class="form-group">
-            <label>Titulo</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Descripcion</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Imagen</label>
-            <input type="file" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Items</label>
-            <input type="text" class="form-control" required>
-        </div>
-    </div>
-    <div class="modal-footer m-2">
-        <input type="button" class="btn btn-danger m-2" data-dismiss="modal" value="Cancel">
-        <input type="submit" class="btn btn-success m-2" value="Add">
-    </div>
-</form>
-
 <!-- AGREGAR SERVICIO -->
-
-<form class="container" hidden>
-    <div class="">
-        <h4 class="">Agregar Servicio</h4>
-    </div>
-    <div class="">
-        <div class="form-group">
-            <label>Paquete</label>
-            <select name="" id="" class="form-control">
-                <option value="manzana">-- ESCOJA EL PAQUETE USADO --</option>
-            </select>
+<div class="overlay" *ngIf="formServicios">
+    <form class="container formularios">
+        <div class="">
+            <h4 class="">Agregar Servicio</h4>
         </div>
-        <div class="form-group">
-            <label>Personalizacion</label>
-            <textarea class="form-control" required></textarea>
+        <div class="">
+            <div class="form-group">
+                <label>Paquete</label>
+                <select name="" id="" class="form-control">
+                    <option value="manzana">-- ESCOJA EL PAQUETE USADO --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Personalizacion</label>
+                <textarea class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Imagen</label>
+                <input type="file" class="form-control" required>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Imagen</label>
-            <input type="file" class="form-control" required>
+        <div class="modal-footer m-2">
+            <button class="btn btn-danger m-2" (click)="OcultarFormularioS()">Cerrar</button>
+            <button class="btn btn-success m-2">Agregar</button>
         </div>
-    </div>
-    <div class="modal-footer m-2">
-        <input type="button" class="btn btn-danger m-2" data-dismiss="modal" value="Cancel">
-        <input type="submit" class="btn btn-success m-2" value="Add">
-    </div>
-</form>
+    </form>
+</div>
