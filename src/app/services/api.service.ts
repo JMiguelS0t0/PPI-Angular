@@ -29,8 +29,15 @@ export class apiService {
 
   public createCatalogo(C: CatalogoModel): Observable<boolean> {
     return this.http
-      .post<boolean>(this.catalogoUrl, C)
+      .post<boolean>(`${this.catalogoUrl}`, C)
       .pipe(catchError(this.handleError));
+  }
+
+  public deleteCatalogo(Id: number): void {
+    this.http
+      .delete(`${this.catalogoUrl}/${Id}`)
+      .pipe(catchError(this.handleError))
+      .subscribe();
   }
 
   //-------------------------SERVICIOS
@@ -38,6 +45,13 @@ export class apiService {
     return this.http
       .get<ServiciosModel>(this.serviciosUrl)
       .pipe(catchError(this.handleError));
+  }
+
+  public deleteServicio(Id: number): void {
+    this.http
+      .delete(`${this.serviciosUrl}/${Id}`)
+      .pipe(catchError(this.handleError))
+      .subscribe();
   }
 
   // ------------------------- ERROR

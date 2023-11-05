@@ -7,12 +7,10 @@
             <img src="../../assets/img/Decoracion.jpeg" alt="imagen" class="w-100 mt-md-1 pt-md-3">
         </div>
         <div class="col-12 col-md-6 fontsize">
-            <ol class="list-group list-group-numbered text-start mt-4">
                 <ng-container *ngFor="let item of paquetes">
                     <p class="">{{item.descripcion}}</p>
-                    <li class="list-group-item" *ngFor="let subItem of item.items">{{subItem}}</li>
+                    <p class="list-group-item" *ngFor="let subItem of item.items">{{subItem}}</p>
                 </ng-container>
-            </ol>
             <div class="d-flex comprar justify-content-end align-items-end">
                 <button type="submit" class="btn mt-3 btn-bg text-black btn-comprar">
                     Comprar:

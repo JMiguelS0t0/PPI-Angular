@@ -2,13 +2,13 @@
 
 <div class="bg-white text-center pt-2 p-5 mb-2 text-center">
     <div class="row">
-        <ng-container *ngFor="let paquete of paquetes">
+        <ng-container *ngFor="let catalogo of listacatalogo">
             <div class="col-12 col-md-4 mb-3">
                 <div class="card card-personalizada img-bg">
-                    <img [src]="paquete.image" class="card-img-top" alt="...">
+                    <img [src]="catalogo.image" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ paquete.title }}</h5>
-                        <p class="card-text text-black">{{ paquete.descripcion }}</p>
+                        <h5 class="card-title">{{ catalogo.nombre }}</h5>
+                        <p class="card-text text-black">{{ catalogo.descripcion }}</p>
                         <a class="btn btn-bg" routerLink="/entcatalogo">Ver información</a>
                     </div>
                 </div>

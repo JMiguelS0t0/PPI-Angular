@@ -13,14 +13,34 @@ export class CrudComponent implements OnInit {
   constructor(private apiService: apiService) {}
 
   ngOnInit(): void {
+    this.getCatalogo();
+
+    this.getServicios();
+  }
+
+  //--------------------CATALOGO
+  getCatalogo() {
     this.apiService.getCatalogo().subscribe((catalogo) => {
       console.log(catalogo);
       this.listacatalogo = catalogo;
     });
+  }
 
+  deleteCatalogo(Id: number) {
+    this.apiService.deleteCatalogo(Id);
+    this.getCatalogo();
+  }
+
+  //--------------------SERVICIOS
+  getServicios() {
     this.apiService.getServicios().subscribe((servicios) => {
       console.log(servicios);
       this.listaservicios = servicios;
     });
+  }
+
+  deleteServicio(Id: number) {
+    this.apiService.deleteServicio(Id);
+    this.getServicios();
   }
 }
