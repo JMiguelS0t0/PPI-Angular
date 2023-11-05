@@ -56,31 +56,66 @@
 
 <!-- Agregar PRODUCTO -->
 <div class="overlay" *ngIf="formVisible">
-    <form class="container formularios">
+    <form class="container formularios" [formGroup]="insertCatalogoForm">
         <div class="">
             <h4 class="">Agregar producto</h4>
         </div>
         <div class="">
             <div class=" form-group">
                 <label>Titulo</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" formControlName="titulo">
+                <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="text-danger">
+                    <div *ngIf="titulo.errors?.['required']">
+                        El Titulo es obligatorio!
+                    </div>
+                    <div *ngIf="titulo.errors?.['titulo']">
+                        Ingresa un titulo verdadero.
+                    </div>
+                </div>
             </div>
+
             <div class="form-group">
                 <label>Descripcion</label>
-                <textarea class="form-control" required></textarea>
+                <textarea class="form-control" formControlName="descripcion"></textarea>
+                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="text-danger">
+                    <div *ngIf="descripcion.errors?.['required']">
+                        La descripcion es obligatoria!
+                    </div>
+                    <div *ngIf="descripcion.errors?.['descripcion']">
+                        Ingresa un titulo verdadero.
+                    </div>
+                </div>
             </div>
+
             <div class="form-group">
                 <label>Imagen</label>
-                <input type="file" class="form-control" required>
+                <input type="text" class="form-control" formControlName="img">
+                <div *ngIf="img.invalid && (img.dirty || img.touched)" class="text-danger">
+                    <div *ngIf="img.errors?.['required']">
+                        La imagen es obligatoria!
+                    </div>
+                    <div *ngIf="descripcion.errors?.['img']">
+                        Sube una imagen
+                    </div>
+                </div>
             </div>
+
             <div class="form-group">
                 <label>Items</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" formControlName="item">
+                <div *ngIf="item.invalid && (item.dirty || item.touched)" class="text-danger">
+                    <div *ngIf="item.errors?.['required']">
+                        Los items son obligatoris!
+                    </div>
+                    <div *ngIf="descripcion.errors?.['item']">
+                        Ingresa algun item
+                    </div>
+                </div>
             </div>
         </div>
         <div class="modal-footer m-2">
             <button class="btn btn-danger m-2" (click)="OcultarFormulario()">Cerrar</button>
-            <button class="btn btn-success m-2">Agregar</button>
+            <button class="btn btn-success m-2" (click)="insertCatalogo()">Agregar</button>
         </div>
     </form>
 </div>

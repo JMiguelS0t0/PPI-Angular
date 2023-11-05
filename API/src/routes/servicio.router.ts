@@ -32,7 +32,7 @@ router.get('/servicios/:id', (req: express.Request, res: express.Response) => {
 router.post('/servicios', (req: express.Request, res: express.Response) => {
   ServicioController.PostServicio(req.body as servicios)
     .then((f) => {
-      if (f) res.status(201).send('Inserted');
+      if (f) res.status(201).json({ message: 'Inserted' });
       else res.status(500).send();
     })
     .catch((e) => {
@@ -46,7 +46,7 @@ router.delete(
     const Id = parseInt(req.params.Id);
     ServicioController.DeleteServicio(Id)
       .then((f) => {
-        if (f) res.status(201).send('Deleted');
+        if (f) res.status(201).json({ message: 'Deleted' });
         else res.status(500).send();
       })
       .catch((e) => {
@@ -61,7 +61,7 @@ router.put('/servicios/:Id', (req: express.Request, res: express.Response) => {
   ServicioController.UpdateServicio(Id, updatedServicio)
     .then((updated) => {
       if (updated) {
-        res.status(201).send('Updated');
+        res.status(201).json({ message: 'Updated' });
       } else {
         res.status(500).send();
       }

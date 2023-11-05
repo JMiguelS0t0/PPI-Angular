@@ -21,7 +21,7 @@ router.get('/catalogo/:id', (req: express.Request, res: express.Response) => {
       if (catalogo) {
         res.json(catalogo);
       } else {
-        res.status(404).send('Catálogo no encontrado');
+        res.status(404).json({ message: 'Catalogo no encontrado' });
       }
     })
     .catch((e) => {
@@ -32,7 +32,7 @@ router.get('/catalogo/:id', (req: express.Request, res: express.Response) => {
 router.post('/catalogo', (req: express.Request, res: express.Response) => {
   CatalogoController.postCatalogo(req.body as catalogo)
     .then((f) => {
-      if (f) res.status(201).send('Inserted');
+      if (f) res.status(201).json({ message: 'Inserted' });
       else res.status(500).send();
     })
     .catch((e) => {
@@ -46,7 +46,7 @@ router.delete(
     const Id = parseInt(req.params.Id);
     CatalogoController.DeleteCatalogo(Id)
       .then((f) => {
-        if (f) res.status(201).send('Deleted');
+        if (f) res.status(201).json({ message: 'Deleted' });
         else res.status(500).send();
       })
       .catch((e) => {
@@ -61,7 +61,7 @@ router.put('/catalogo/:Id', (req: express.Request, res: express.Response) => {
   CatalogoController.UpdateCatalogo(Id, UpdateCatalogo)
     .then((updated) => {
       if (updated) {
-        res.status(201).send('Updated');
+        res.status(201).json({ message: 'Updated' });
       } else {
         res.status(500).send();
       }

@@ -101,7 +101,6 @@ export class apiService {
 
   // ------------------------- ERROR
   private handleError(error: HttpErrorResponse) {
-    console.log(error);
-    return throwError(() => new Error(''));
+   return throwError(error)
   }
 }
