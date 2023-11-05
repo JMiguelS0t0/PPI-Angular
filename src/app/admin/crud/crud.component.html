@@ -26,11 +26,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Titulo #1</td>
-                <td>Descirpcion</td>
-                <td>Lista</td>
-                <td>Imagen</td>
+            <tr *ngFor="let catalogo of listacatalogo">
+                <td>{{catalogo.nombre}}</td>
+                <td>{{catalogo.descripcion}}</td>
+                <td>{{catalogo.items}}</td>
+                <td>
+                    <img [src]="catalogo.img">
+                </td>
                 <td>
                     <a href="" class="btn btn-warning m-2"> <svg xmlns="http://www.w3.org/2000/svg" width="16"
                             height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -74,17 +76,21 @@
     <table class="table table-sm">
         <thead>
             <tr>
-                <th scope="col">Paquete: --</th>
+                <th scope="col">Paquete</th>
                 <th scope="col">Personalizacion</th>
+                <th scope="col">Descripcion</th>
                 <th scope="col">Imagen</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Paquete</td>
-                <td>Personalizacion</td>
-                <td>Imagen</td>
+            <tr *ngFor="let servicios of listaservicios">
+                <td>{{servicios.paquete}}</td>
+                <td>{{servicios.personalizacion}}</td>
+                <td>{{servicios.descripcion}}</td>
+                <td>
+                    <img [src]="servicios.img" alt="">
+                </td>
                 <td>
                     <a href="" class="btn btn-warning m-2"> <svg xmlns="http://www.w3.org/2000/svg" width="16"
                             height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

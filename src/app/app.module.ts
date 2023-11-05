@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicioComponent } from './Vistas/inicio/inicio.component';
+
 import { SharedModule } from './shared/shared.module';
-import { ServiciosPrestadosComponent } from './Vistas/servicios-prestados/servicios-prestados.component';
-import { CatalogoComponent } from './Vistas/catalogo/catalogo.component';
-import { EntCatalogoComponent } from './Vistas/ent-catalogo/ent-catalogo.component';
-import { EntServiciosComponent } from './Vistas/ent-servicios/ent-servicios.component';
+
 import { HttpClientModule } from '@angular/common/http';
+import { CrudComponent } from './admin/crud/crud.component';
+import { vistasModule } from './Vistas/vistas.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    InicioComponent,
-    ServiciosPrestadosComponent,
-    CatalogoComponent,
-    EntServiciosComponent,
-    EntCatalogoComponent,
+  declarations: [AppComponent, CrudComponent],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    AppRoutingModule,
+    vistasModule,
+    SharedModule,
+    HttpClientModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
