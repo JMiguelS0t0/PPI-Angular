@@ -399,7 +399,7 @@
 
             <div class="form-group">
                 <label>Imagen</label>
-                <input type="text" class="form-control" formControlName="img">
+                <input type="file" class="form-control" formControlName="img">
                 <div *ngIf="imgServicios.invalid && (imgServicios.dirty || imgServicios.touched)" class="text-danger">
                     <div *ngIf="imgServicios.errors?.['required']">
                         La imagen es obligatoria!
