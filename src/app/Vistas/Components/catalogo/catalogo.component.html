@@ -8,7 +8,8 @@
                     <img [src]="catalogo.img" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ catalogo.nombre }}</h5>
-                        <p class="card-text text-black">{{ catalogo.descripcion }}</p>
+                        <p class="card-text text-black">{{LenghtService.caracteresDescripcion(catalogo.descripcion, 40)}}
+                        </p>
                         <button class="btn btn-bg" (click)="routerPag('entcatalogo/' + catalogo.id)">Ver
                             información</button>
                     </div>

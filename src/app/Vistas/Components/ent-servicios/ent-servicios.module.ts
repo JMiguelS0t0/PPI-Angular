@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
-
+import { SharedModule } from '../../../shared/shared.module';
 @NgModule({
   declarations: [],
   imports: [SharedModule],
 })
-export class InicioModule {}
+export class EntServiciosModule {}

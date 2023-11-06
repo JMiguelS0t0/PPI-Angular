@@ -6,7 +6,7 @@
                 <img [src]="servicios.img" alt="Logo" class="w-100 mt-md-3 pt-md-2">
             </div>
             <div class="col-12 col-md-6 mt-md-2 pt-md-2 mb-3">
-                <p class="text-start "> {{servicios.descripcion}} </p>
+                <p class="text-start "> {{LenghtService.caracteresDescripcion(servicios.descripcion, 50)}} </p>
                 <div class="text-end container-btn mt-auto">
                     <button class="btn btn-bg" (click)="routerPag('servicio/' + servicios.id)">Leer mas</button>
                 </div>

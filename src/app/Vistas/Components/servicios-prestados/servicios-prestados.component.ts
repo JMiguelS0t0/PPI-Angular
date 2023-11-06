@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
-import { apiService } from '../../services/api.service';
+import { apiService } from '../../../services/api.service';
 import { Router } from '@angular/router';
-
+import { LenghtService } from '../../../services/lenght.service';
+import { NgModule } from '@angular/core';
+@NgModule({
+  declarations: [],
+  providers: [LenghtService],
+})
+export class ServiciosPrestadosModule {}
 @Component({
   selector: 'app-servicios-prestados',
   templateUrl: './servicios-prestados.component.html',
@@ -10,7 +16,11 @@ import { Router } from '@angular/router';
 export class ServiciosPrestadosComponent {
   public listaservicios: any = [];
 
-  constructor(private apiService: apiService, private router: Router) {}
+  constructor(
+    public LenghtService: LenghtService,
+    private apiService: apiService,
+    private router: Router
+  ) {}
 
   routerPag(url: string): void {
     this.router.navigate([url]);
