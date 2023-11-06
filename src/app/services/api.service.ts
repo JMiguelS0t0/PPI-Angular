@@ -104,6 +104,12 @@ export class apiService {
       .pipe(catchError(this.handleError));
   }
 
+  public updateServicio(S: ServiciosModel, Id: number): Observable<boolean> {
+    return this.http
+      .put<boolean>(`${this.serviciosUrl}/${Id}`, S)
+      .pipe(catchError(this.handleError));
+  }
+
   public deleteServicio(Id: number): void {
     this.http
       .delete(`${this.serviciosUrl}/${Id}`)

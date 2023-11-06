@@ -33,7 +33,7 @@ export class CrudComponent implements OnInit {
       this.listacatalogo = catalogo;
 
       this.nombresCatalogo = catalogo;
-      console.log('Nombres', this.nombresCatalogo);
+      // console.log('Nombres', this.nombresCatalogo);
     });
   }
 
@@ -65,6 +65,7 @@ export class CrudComponent implements OnInit {
               this.insertCatalogoForm.reset();
               this.OcultarFormulario();
               this.toastr.success('Se creó correctamente.');
+              this.getCatalogo();
             } else {
               this.showError = true;
             }
@@ -103,9 +104,7 @@ export class CrudComponent implements OnInit {
   }
 
   // FORMULARIO UPDATE CATALOGO
-
   public formUpdateVisible: boolean = false;
-
   private catalogoIdToUpdate: number | null = null;
 
   updateCatalogo() {
@@ -121,8 +120,6 @@ export class CrudComponent implements OnInit {
               this.insertCatalogoForm.reset();
               this.OcultarUpdateFormulario();
               this.toastr.success('Se actualizó correctamente.');
-
-              // Actualiza la lista de catálogos después de una actualización exitosa
               this.getCatalogo();
             } else {
               this.showError = true;
@@ -137,6 +134,16 @@ export class CrudComponent implements OnInit {
   MostrarFormularioUpdate(Id: number) {
     this.formUpdateVisible = true;
     this.catalogoIdToUpdate = Id;
+
+    // Cargar los datos del catálogo en el formulario
+    this.apiService.getCatalogoById(Id).subscribe((catalogo) => {
+      this.insertCatalogoForm.patchValue({
+        nombre: catalogo.nombre,
+        descripcion: catalogo.descripcion,
+        img: catalogo.img,
+        items: catalogo.items,
+      });
+    });
   }
 
   OcultarUpdateFormulario() {
@@ -154,6 +161,13 @@ export class CrudComponent implements OnInit {
   deleteServicio(Id: number) {
     this.apiService.deleteServicio(Id);
     this.getServicios();
+  }
+
+  getNombrePaquete(id: number): string {
+    const nombreCatalogo = this.nombresCatalogo.find(
+      (nombre) => nombre.id === id
+    );
+    return nombreCatalogo ? nombreCatalogo.nombre : 'Desconocido';
   }
 
   insertedServiciosForm = this.formBuidler.group({
@@ -175,6 +189,7 @@ export class CrudComponent implements OnInit {
               this.insertedServiciosForm.reset();
               this.OcultarFormulario();
               this.toastr.success('Se creó correctamente.');
+              this.getServicios();
             } else {
               this.showError = true;
             }
@@ -201,7 +216,7 @@ export class CrudComponent implements OnInit {
     return this.insertedServiciosForm.controls.img;
   }
 
-  // FORMULARIO SERVICIOS
+  // FORMULARIO INSERT SERVICIOS
 
   public formServicios: boolean = false;
 
@@ -211,5 +226,53 @@ export class CrudComponent implements OnInit {
 
   OcultarFormularioS() {
     this.formServicios = false;
+  }
+
+  // FORMULARIO UPDATE SERVICIOS
+  public formUpdateServiciosVisible: boolean = false;
+  private servicioIdToUpdate: number | null = null;
+
+  updateServicios() {
+    if (this.insertedServiciosForm.valid && this.servicioIdToUpdate) {
+      const servicioData = this.insertedServiciosForm
+        .value as unknown as ServiciosModel;
+
+      this.apiService
+        .updateServicio(servicioData, this.servicioIdToUpdate)
+        .subscribe({
+          next: (response) => {
+            if (response) {
+              this.insertedServiciosForm.reset();
+              this.OcultarUpdateServiciosFormulario();
+              this.toastr.success('Se actualizó el servicio correctamente.');
+
+              this.getServicios();
+            } else {
+              this.showError = true;
+            }
+          },
+        });
+    } else {
+      this.insertedServiciosForm.markAllAsTouched();
+    }
+  }
+
+  MostrarFormularioUpdateServicios(Id: number) {
+    this.formUpdateServiciosVisible = true;
+    this.servicioIdToUpdate = Id;
+
+    // Cargar los datos del servicio en el formulario
+    this.apiService.getServicioById(Id).subscribe((servicio) => {
+      this.insertedServiciosForm.patchValue({
+        descripcion: servicio.descripcion,
+        img: servicio.img,
+        paquete: servicio.paquete.toString(),
+        personalizacion: servicio.personalizacion,
+      });
+    });
+  }
+
+  OcultarUpdateServiciosFormulario() {
+    this.formUpdateServiciosVisible = false;
   }
 }
