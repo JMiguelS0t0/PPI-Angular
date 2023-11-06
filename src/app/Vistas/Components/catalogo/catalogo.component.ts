@@ -5,8 +5,7 @@ import { NgModule } from '@angular/core';
 import { LenghtService } from '../../../services/lenght.service';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   providers: [LenghtService],
 })
 export class VistasModule {}
