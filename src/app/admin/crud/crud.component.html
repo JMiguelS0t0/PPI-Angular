@@ -322,10 +322,11 @@
 
 
 <!-- ACTUALIZAR SERVICIO -->
+
 <div class="overlay" *ngIf="formUpdateServiciosVisible">
     <form class="container formularios" [formGroup]="insertedServiciosForm">
         <div class="">
-            <h4 class="">Actualizar Servicio</h4>
+            <h4 class="">Agregar Servicio</h4>
         </div>
         <div class="">
             <div class="form-group">
@@ -340,7 +341,7 @@
                         <div *ngIf="paqueteServicios.errors?.['required']">
                             Escoge un paquete! </div>
                         <div *ngIf="paqueteServicios.errors?.['paqueteServicios']">
-                            Escoge algun paquete
+                            Ingresa algun texto
                         </div>
                     </div>
                 </select>
@@ -387,8 +388,8 @@
             </div>
         </div>
         <div class="modal-footer m-2">
-            <button class="btn btn-danger m-2" (click)="updateServicios()">Cerrar</button>
-            <button class="btn btn-success m-2" (click)="OcultarUpdateServiciosFormulario()">Actualizar</button>
+            <button class="btn btn-danger m-2" (click)="OcultarUpdateServiciosFormulario()">Cerrar</button>
+            <button class="btn btn-success m-2" (click)="updateServicios()">Actualizar</button>
         </div>
     </form>
 </div>

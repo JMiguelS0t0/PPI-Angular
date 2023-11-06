@@ -187,7 +187,7 @@ export class CrudComponent implements OnInit {
           next: (response) => {
             if (response) {
               this.insertedServiciosForm.reset();
-              this.OcultarFormulario();
+              this.OcultarFormularioS();
               this.toastr.success('Se creó correctamente.');
               this.getServicios();
             } else {
@@ -245,7 +245,6 @@ export class CrudComponent implements OnInit {
               this.insertedServiciosForm.reset();
               this.OcultarUpdateServiciosFormulario();
               this.toastr.success('Se actualizó el servicio correctamente.');
-
               this.getServicios();
             } else {
               this.showError = true;
@@ -261,7 +260,7 @@ export class CrudComponent implements OnInit {
     this.formUpdateServiciosVisible = true;
     this.servicioIdToUpdate = Id;
 
-    // Cargar los datos del servicio en el formulario
+    // // Cargar los datos del servicio en el formulario
     this.apiService.getServicioById(Id).subscribe((servicio) => {
       this.insertedServiciosForm.patchValue({
         descripcion: servicio.descripcion,
