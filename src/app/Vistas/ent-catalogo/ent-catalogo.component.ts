@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { apiService } from '../../services/api.service';
 
 @Component({
@@ -10,7 +10,15 @@ import { apiService } from '../../services/api.service';
 export class EntCatalogoComponent implements OnInit {
   public catalogo: any;
 
-  constructor(private route: ActivatedRoute, private apiService: apiService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: apiService,
+    private router: Router
+  ) {}
+
+  routerPag(url: string): void {
+    this.router.navigate([url]);
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {

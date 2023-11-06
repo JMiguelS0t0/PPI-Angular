@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
@@ -9,7 +10,11 @@ import { apiService } from '../../services/api.service';
 export class CatalogoComponent implements OnInit {
   public listacatalogo: any = [];
 
-  constructor(private apiService: apiService) {}
+  constructor(private apiService: apiService, private router: Router) {}
+
+  routerPag(url: string): void {
+    this.router.navigate([url]);
+  }
 
   ngOnInit(): void {
     this.getCatalogo();

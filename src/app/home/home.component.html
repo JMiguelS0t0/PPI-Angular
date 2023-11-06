@@ -48,14 +48,15 @@
             <h1 class="mb-2">Nuestros Servicios</h1>
             <p class="mb-5 text-center">Descubre lo que tenemos para ti!</p>
             <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
-                <button class="btn btn-bg btn-grande" routerLink="/catalogo">Catalogo</button>
-                <button class="btn btn-bg btn-grande" routerLink="/servicioprestado">Servicios Prestados</button>
+                <button class="btn btn-bg btn-grande" (click)="routerPag('catalogo')">Catalogo</button>
+                <button class="btn btn-bg btn-grande" (click)="routerPag('servicioprestado')">Servicios
+                    Prestados</button>
             </div>
         </div>
     </section>
 
     <!-- 4° Seccion -->
-    <section class="bg-white text-center p-5 mb-5 text-black">
+    <section class=" bg-white text-center p-5 mb-5 text-black">
         <h1>Contactanos</h1>
 
         <div class="d-flex justify-content-center">

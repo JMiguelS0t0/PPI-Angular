@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { apiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-servicios-prestados',
@@ -9,7 +10,11 @@ import { apiService } from '../../services/api.service';
 export class ServiciosPrestadosComponent {
   public listaservicios: any = [];
 
-  constructor(private apiService: apiService) {}
+  constructor(private apiService: apiService, private router: Router) {}
+
+  routerPag(url: string): void {
+    this.router.navigate([url]);
+  }
 
   ngOnInit(): void {
     this.getServicios();

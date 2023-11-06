@@ -9,7 +9,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ catalogo.nombre }}</h5>
                         <p class="card-text text-black">{{ catalogo.descripcion }}</p>
-                        <button class="btn btn-bg" routerLink="['/entcatalogo/20']">Ver información</button>
+                        <button class="btn btn-bg" (click)="routerPag('entcatalogo/' + catalogo.id)">Ver
+                            información</button>
                     </div>
                 </div>
             </div>
