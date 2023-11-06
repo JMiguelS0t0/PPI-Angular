@@ -54,9 +54,9 @@ export class apiService {
   }
 
   // -------------------------  CATALOGO
-  public getCatalogo(): Observable<CatalogoModel> {
+  public getCatalogo(): Observable<CatalogoModel[]> {
     return this.http
-      .get<CatalogoModel>(this.catalogoUrl)
+      .get<CatalogoModel[]>(this.catalogoUrl)
       .pipe(catchError(this.handleError));
   }
 
@@ -78,6 +78,12 @@ export class apiService {
       .subscribe();
   }
 
+  public updateCatalogo(C: CatalogoModel, Id: number): Observable<boolean> {
+    return this.http
+      .put<boolean>(`${this.catalogoUrl}/${Id}`, C)
+      .pipe(catchError(this.handleError));
+  }
+
   //-------------------------SERVICIOS
   public getServicios(): Observable<ServiciosModel> {
     return this.http
@@ -92,6 +98,12 @@ export class apiService {
       .pipe(catchError(this.handleError));
   }
 
+  public createServicio(S: ServiciosModel): Observable<boolean> {
+    return this.http
+      .post<boolean>(`${this.serviciosUrl}`, S)
+      .pipe(catchError(this.handleError));
+  }
+
   public deleteServicio(Id: number): void {
     this.http
       .delete(`${this.serviciosUrl}/${Id}`)
@@ -101,6 +113,6 @@ export class apiService {
 
   // ------------------------- ERROR
   private handleError(error: HttpErrorResponse) {
-   return throwError(error)
+    return throwError(error);
   }
 }

@@ -1,7 +1,7 @@
 export interface ServiciosModel {
-  id: number;
+  id?: number;
   descripcion: string;
   paquete: number;
-  img: null | string;
+  img: string;
   personalizacion: string;
 }
