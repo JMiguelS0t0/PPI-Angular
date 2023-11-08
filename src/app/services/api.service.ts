@@ -1,13 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  Observable,
-  catchError,
-  BehaviorSubject,
-  tap,
-  throwError,
-  of,
-} from 'rxjs';
+import { Observable, catchError, BehaviorSubject, tap, throwError } from 'rxjs';
 
 import { CatalogoModel, ServiciosModel } from '../models';
 import { adminModel } from '../models/admin.model';
